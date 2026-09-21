@@ -1,0 +1,54 @@
+.hero{
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    padding: 80px;
+    background-image: url("https://images.unsplash.com/photo-1566073771259-6a8506099945");
+    background-size: center;
+    background-position: center;
+    position: relative;
+}
+
+.hero::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.hero-content{
+    position: relative;
+    max-width: 650px;
+    color:white
+}
+
+.hero-small-text{
+    font-size: 13px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: 64px;
+  line-height: 1.05;
+  margin-bottom: 25px;
+}
+
+.hero h1 span {
+  font-style: italic;
+}
+
+.hero-description {
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 500px;
+  margin-bottom: 30px;
+}
+
+.hero-button {
+  padding: 15px 32px;
+  border: none;
+  background: white;
+  color: #222;
+  font-size: 15px;
+  cursor: pointer;
+}

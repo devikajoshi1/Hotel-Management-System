@@ -1,0 +1,43 @@
+.booking-search {
+  width: 85%;
+  margin: -45px auto 0;
+  position: relative;
+  background: white;
+  padding: 25px 30px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.search-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.search-item label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #777;
+}
+
+.search-item input,
+.search-item select {
+  border: none;
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0;
+  font-size: 15px;
+  outline: none;
+  background: white;
+}
+
+.search-button {
+  padding: 15px 25px;
+  background: #222;
+  color: white;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}

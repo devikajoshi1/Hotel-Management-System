@@ -1,0 +1,59 @@
+.featured-rooms {
+  padding: 100px 70px;
+  background: #fafafa;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-heading p {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #777;
+  margin-bottom: 12px;
+}
+
+.section-heading h2 {
+  font-size: 42px;
+  font-weight: 400;
+}
+
+.room-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.room-card {
+  background: white;
+  overflow: hidden;
+}
+
+.room-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.room-info {
+  padding: 25px;
+}
+
+.room-info h3 {
+  font-size: 23px;
+  margin-bottom: 10px;
+}
+
+.room-info p {
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.room-info button {
+  padding: 10px 20px;
+  border: 1px solid #222;
+  background: white;
+  cursor: pointer;
+}

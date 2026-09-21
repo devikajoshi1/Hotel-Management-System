@@ -1,0 +1,66 @@
+.rooms-page {
+  padding: 70px;
+  background: #f8f7f4;
+  min-height: 100vh;
+}
+
+.rooms-page > h1 {
+  text-align: center;
+  font-size: 48px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.rooms-page > p {
+  text-align: center;
+  color: #777;
+  margin-bottom: 50px;
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.room-card {
+  background: white;
+  overflow: hidden;
+}
+
+.room-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.room-info {
+  padding: 25px;
+}
+
+.room-info h2 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.room-info p {
+  color: #777;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.room-info h3 {
+  font-size: 20px;
+  margin: 18px 0;
+}
+
+.room-info button {
+  padding: 12px 24px;
+  background: #222;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
