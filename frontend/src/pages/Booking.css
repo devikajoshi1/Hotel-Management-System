@@ -1,0 +1,130 @@
+.booking-page {
+  min-height: 100vh;
+  background: #f8f7f4;
+  padding: 80px 60px;
+}
+
+.booking-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  background: white;
+}
+
+.booking-room img {
+  width: 100%;
+  height: 100%;
+  min-height: 650px;
+  object-fit: cover;
+}
+
+.booking-room-info {
+  padding: 45px;
+}
+
+.booking-label {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+.booking-room-info h1 {
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.booking-room-info > p:not(.booking-label) {
+  color: #777;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.booking-room-details {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 0;
+  border-top: 1px solid #eee;
+}
+
+.booking-room-details span {
+  color: #888;
+  font-size: 13px;
+}
+
+.booking-room-details strong {
+  font-weight: 500;
+}
+
+.booking-form-box {
+  padding: 60px 50px;
+}
+
+.booking-form-box h2 {
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 35px;
+}
+
+.booking-input-group {
+  margin-bottom: 22px;
+}
+
+.booking-input-group label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.booking-input-group input,
+.booking-input-group select {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ddd;
+  background: white;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.booking-summary {
+  margin-top: 30px;
+  border-top: 1px solid #ddd;
+}
+
+.booking-summary div {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  font-size: 14px;
+}
+
+.booking-summary span {
+  color: #777;
+}
+
+.booking-total {
+  border-top: 1px solid #ddd;
+  margin-top: 5px;
+  padding-top: 20px !important;
+}
+
+.booking-total strong {
+  font-size: 20px;
+}
+
+.confirm-booking-button {
+  width: 100%;
+  padding: 16px;
+  margin-top: 20px;
+  border: none;
+  background: #222;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.confirm-booking-button:hover {
+  background: #444;
+}

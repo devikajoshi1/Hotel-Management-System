@@ -1,0 +1,130 @@
+.my-bookings-page {
+  min-height: 100vh;
+  background: #f8f7f4;
+  padding: 80px 60px;
+}
+
+.my-bookings-header {
+  max-width: 1100px;
+  margin: 0 auto 50px;
+}
+
+.my-bookings-header p {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+.my-bookings-header h1 {
+  font-size: 48px;
+  font-weight: 400;
+  margin: 0 0 12px;
+}
+
+.my-bookings-header span {
+  color: #777;
+}
+
+.bookings-list {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.booking-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  background: white;
+}
+
+.booking-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  object-fit: cover;
+}
+
+.booking-info {
+  padding: 35px 40px;
+}
+
+.booking-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.booking-title p {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #888;
+  margin: 0 0 8px;
+}
+
+.booking-title h2 {
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.booking-status {
+  padding: 7px 12px;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.booking-status.confirmed {
+  background: #eef5ee;
+  color: #3d6b43;
+}
+
+.booking-status.cancelled {
+  background: #f5eeee;
+  color: #8a4a4a;
+}
+
+.booking-description {
+  color: #777;
+  line-height: 1.6;
+  margin: 20px 0 25px;
+}
+
+.booking-details {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid #eee;
+  padding-top: 22px;
+}
+
+.booking-details div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.booking-details span {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #999;
+}
+
+.booking-details strong {
+  font-size: 14px;
+  font-weight: 500;
+}
+.cancel-booking-button {
+  margin-top: 25px;
+  padding: 12px 20px;
+  background: white;
+  color: #8a4a4a;
+  border: 1px solid #d8baba;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.cancel-booking-button:hover {
+  background: #f5eeee;
+}

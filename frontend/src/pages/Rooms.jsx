@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./Rooms.css";
 
 const Rooms = () => {
@@ -40,7 +41,9 @@ const Rooms = () => {
 
               <h3>₹{room.price} / night</h3>
 
-              <button>View Details</button>
+              <Link to={`/rooms/${room.id}`}>
+                <button>View Details</button>
+              </Link>
             </div>
 
           </div>
