@@ -1,0 +1,176 @@
+.payment-page {
+  min-height: 100vh;
+  background: #f8f7f4;
+  padding: 80px 60px;
+}
+
+.payment-container {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  background: white;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+/* LEFT SIDE */
+
+.payment-room {
+  padding: 50px;
+  border-right: 1px solid #eee;
+}
+
+.payment-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: #999;
+  margin-bottom: 14px;
+}
+
+.payment-room h1 {
+  font-size: 38px;
+  font-weight: 400;
+  margin: 0 0 20px;
+}
+
+.payment-room-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  margin-bottom: 30px;
+}
+
+.payment-description {
+  color: #777;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.payment-details {
+  border-top: 1px solid #eee;
+}
+
+.payment-detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 17px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.payment-detail span {
+  font-size: 12px;
+  color: #999;
+  letter-spacing: 1px;
+}
+
+.payment-detail strong {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* RIGHT SIDE */
+
+.payment-form-box {
+  padding: 60px 50px;
+}
+
+.payment-form-box h2 {
+  font-size: 30px;
+  font-weight: 400;
+  margin: 0 0 35px;
+}
+
+.payment-input-group {
+  margin-bottom: 25px;
+}
+
+.payment-input-group label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 9px;
+}
+
+.payment-input-group select {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  background: white;
+  font-size: 14px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.payment-input-group select:focus {
+  border-color: #555;
+}
+
+/* TOTAL */
+
+.payment-total {
+  margin-top: 35px;
+  padding: 25px 0;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.payment-total span {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #999;
+  margin-bottom: 8px;
+}
+
+.payment-total strong {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+/* BUTTON */
+
+.pay-now-button {
+  width: 100%;
+  padding: 17px;
+  margin-top: 25px;
+  border: none;
+  background: #222;
+  color: white;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.pay-now-button:hover {
+  background: #444;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .payment-page {
+    padding: 40px 20px;
+  }
+
+  .payment-container {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-room {
+    padding: 30px;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .payment-form-box {
+    padding: 35px 30px;
+  }
+
+  .payment-room h1 {
+    font-size: 30px;
+  }
+
+  .payment-room-image {
+    height: 220px;
+  }
+}

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./MyBookings.css";
 
 const MyBookings = () => {
   const [bookings, setBookings] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -112,14 +114,22 @@ const MyBookings = () => {
               </div>
 
               {booking.status === "CONFIRMED" && (
-                <button
-                  className="cancel-booking-button"
-                  onClick={() => handleCancel(booking.id)}
-                >
-                  Cancel Booking
-                </button>
-              )}
+                <div>
+                  <button
+                    className="pay-booking-button"
+                    onClick={() => navigate(`/payment/${booking.id}`)}
+                  >
+                    Pay Now
+                  </button>
 
+                  <button
+                    className="cancel-booking-button"
+                    onClick={() => handleCancel(booking.id)}
+                  >
+                    Cancel Booking
+                  </button>
+                </div>
+              )}
             </div>
 
           </div>

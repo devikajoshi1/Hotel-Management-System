@@ -128,3 +128,20 @@
 .cancel-booking-button:hover {
   background: #f5eeee;
 }
+.pay-booking-button {
+  margin-top: 25px;
+  margin-right: 12px;
+  padding: 12px 24px;
+  background: #222;
+  color: white;
+  border: 1px solid #222;
+  cursor: pointer;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  transition: 0.3s;
+}
+
+.pay-booking-button:hover {
+  background: #444;
+  border-color: #444;
+}
