@@ -10,6 +10,7 @@ import Rooms from "./pages/Rooms";
 import Booking from "./pages/Booking";
 import MyBookings from "./pages/MyBookings";
 import Payment from "./pages/Payment";
+import Admin from "./pages/Admin";
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/payment/:bookingId" element={<Payment/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/admin" element={<Admin/>} />
       </Routes>
 
     </BrowserRouter>

@@ -1,176 +1,310 @@
 .payment-page {
   min-height: 100vh;
-  background: #f8f7f4;
-  padding: 80px 60px;
+  padding: 60px 40px;
+  background: #f7f5f1;
+  box-sizing: border-box;
 }
+
+
+/* ==============================
+   MAIN CONTAINER
+================================ */
 
 .payment-container {
   max-width: 1100px;
-  margin: auto;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 0.8fr;
-  background: white;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 35px;
+  align-items: stretch;
 }
 
-/* LEFT SIDE */
+
+/* ==============================
+   LEFT ROOM SECTION
+================================ */
 
 .payment-room {
-  padding: 50px;
-  border-right: 1px solid #eee;
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
 }
 
 .payment-label {
-  font-size: 10px;
-  letter-spacing: 4px;
-  color: #999;
-  margin-bottom: 14px;
+  margin: 0 0 12px;
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #9b8060;
 }
 
 .payment-room h1 {
-  font-size: 38px;
-  font-weight: 400;
-  margin: 0 0 20px;
+  margin: 0 0 25px;
+  font-size: 32px;
+  font-weight: 500;
+  color: #2d2925;
 }
 
 .payment-room-image {
   width: 100%;
-  height: 300px;
+  height: 280px;
   object-fit: cover;
-  margin-bottom: 30px;
+  border-radius: 14px;
+  display: block;
 }
 
 .payment-description {
-  color: #777;
+  margin: 22px 0;
+  color: #706b66;
   line-height: 1.7;
-  margin-bottom: 30px;
+  font-size: 14px;
 }
 
+
+/* ==============================
+   BOOKING DETAILS
+================================ */
+
 .payment-details {
-  border-top: 1px solid #eee;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 1px solid #e8e3dd;
 }
 
 .payment-detail {
   display: flex;
-  justify-content: space-between;
-  padding: 17px 0;
-  border-bottom: 1px solid #eee;
+  flex-direction: column;
+  gap: 7px;
 }
 
 .payment-detail span {
-  font-size: 12px;
-  color: #999;
-  letter-spacing: 1px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: #9a938c;
 }
 
 .payment-detail strong {
   font-size: 14px;
   font-weight: 500;
+  color: #302c28;
 }
 
-/* RIGHT SIDE */
+
+/* ==============================
+   RIGHT PAYMENT BOX
+================================ */
 
 .payment-form-box {
-  padding: 60px 50px;
+  background: #2f2924;
+  color: white;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+}
+
+.payment-form-box .payment-label {
+  color: #c6a77b;
 }
 
 .payment-form-box h2 {
-  font-size: 30px;
-  font-weight: 400;
   margin: 0 0 35px;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+
+/* ==============================
+   FORM
+================================ */
+
+.payment-form-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 
 .payment-input-group {
-  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .payment-input-group label {
-  display: block;
   font-size: 13px;
-  margin-bottom: 9px;
+  color: #d8d0c8;
 }
 
 .payment-input-group select {
   width: 100%;
-  padding: 15px;
-  border: 1px solid #ddd;
-  background: white;
+  padding: 14px 15px;
+  border: 1px solid #5c534b;
+  border-radius: 8px;
+  background: #3a332d;
+  color: white;
   font-size: 14px;
-  box-sizing: border-box;
   outline: none;
+  box-sizing: border-box;
+  cursor: pointer;
 }
 
 .payment-input-group select:focus {
-  border-color: #555;
+  border-color: #c6a77b;
 }
 
-/* TOTAL */
+
+/* ==============================
+   TOTAL
+================================ */
 
 .payment-total {
-  margin-top: 35px;
-  padding: 25px 0;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 0;
+  border-top: 1px solid #514940;
+  border-bottom: 1px solid #514940;
 }
 
 .payment-total span {
-  display: block;
   font-size: 11px;
-  letter-spacing: 2px;
-  color: #999;
-  margin-bottom: 8px;
+  letter-spacing: 1.5px;
+  color: #b9b1aa;
 }
 
 .payment-total strong {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 500;
+  color: #ffffff;
 }
 
-/* BUTTON */
+
+/* ==============================
+   PAY BUTTON
+================================ */
 
 .pay-now-button {
   width: 100%;
-  padding: 17px;
-  margin-top: 25px;
+  padding: 15px;
   border: none;
-  background: #222;
-  color: white;
-  font-size: 14px;
-  letter-spacing: 1px;
+  border-radius: 8px;
+  background: #c6a77b;
+  color: #2f2924;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.25s ease;
 }
 
 .pay-now-button:hover {
-  background: #444;
+  background: #d5b98e;
+  transform: translateY(-1px);
 }
 
-/* MOBILE */
 
-@media (max-width: 768px) {
-  .payment-page {
-    padding: 40px 20px;
-  }
+/* ==============================
+   SUCCESS PAGE
+================================ */
 
+.payment-success-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background: #f7f5f1;
+  box-sizing: border-box;
+}
+
+.payment-success-box {
+  width: 100%;
+  max-width: 550px;
+  background: white;
+  padding: 60px 50px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.success-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.payment-success-box h1 {
+  margin: 10px 0 15px;
+  font-size: 32px;
+  font-weight: 500;
+  color: #2f2924;
+}
+
+.payment-success-box p:not(.payment-label) {
+  margin: 0 0 30px;
+  color: #716b65;
+  line-height: 1.6;
+}
+
+.success-bookings-button {
+  border: none;
+  padding: 14px 25px;
+  border-radius: 8px;
+  background: #2f2924;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.success-bookings-button:hover {
+  background: #4a4139;
+}
+
+
+/* ==============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 850px) {
   .payment-container {
     grid-template-columns: 1fr;
   }
 
-  .payment-room {
-    padding: 30px;
-    border-right: none;
-    border-bottom: 1px solid #eee;
+  .payment-room-image {
+    height: 250px;
+  }
+}
+
+@media (max-width: 550px) {
+  .payment-page {
+    padding: 30px 18px;
   }
 
+  .payment-room,
   .payment-form-box {
-    padding: 35px 30px;
+    padding: 25px;
+  }
+
+  .payment-details {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 
   .payment-room h1 {
-    font-size: 30px;
+    font-size: 26px;
   }
 
-  .payment-room-image {
-    height: 220px;
+  .payment-form-box h2 {
+    font-size: 25px;
+  }
+
+  .payment-success-box {
+    padding: 40px 25px;
   }
 }
+

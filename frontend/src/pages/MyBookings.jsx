@@ -1,10 +1,11 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import "./MyBookings.css";
 
 const MyBookings = () => {
   const [bookings, setBookings] = useState([]);
+  const [payments, setPayments] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,9 +15,29 @@ const MyBookings = () => {
 
     axios
       .get(`http://localhost:8080/api/bookings/user/${user.id}`)
-      .then((response) => {
+      .then(async (response) => {
         console.log("My bookings:", response.data);
-        setBookings(response.data);
+
+        const bookingList = response.data;
+        setBookings(bookingList);
+
+        const paymentData = {};
+
+        for (const booking of bookingList) {
+          try {
+            const paymentResponse = await axios.get(
+              `http://localhost:8080/api/payments/booking/${booking.id}`
+            );
+
+            paymentData[booking.id] = paymentResponse.data;
+          } catch (error) {
+            console.log(
+              `No payment found for booking ${booking.id}`
+            );
+          }
+        }
+
+        setPayments(paymentData);
       })
       .catch((error) => {
         console.log("Booking error:", error);
@@ -48,7 +69,9 @@ const MyBookings = () => {
 
       <div className="my-bookings-header">
         <p>YOUR STAYS</p>
+
         <h1>My Bookings</h1>
+
         <span>
           Manage your upcoming and previous stays.
         </span>
@@ -56,85 +79,122 @@ const MyBookings = () => {
 
       <div className="bookings-list">
 
-        {bookings.map((booking) => (
+        {bookings.map((booking) => {
 
-          <div className="booking-card" key={booking.id}>
+          const payment = payments[booking.id];
 
-            <div className="booking-image">
-              <img
-                src={booking.room.imageUrl}
-                alt={booking.room.roomType}
-              />
-            </div>
+          const isPaid =
+            payment &&
+            payment.paymentStatus === "SUCCESS";
 
-            <div className="booking-info">
+          return (
+            <div
+              className="booking-card"
+              key={booking.id}
+            >
 
-              <div className="booking-title">
+              <div className="booking-image">
 
-                <div>
-                  <p>ROOM {booking.room.roomNumber}</p>
-
-                  <h2>{booking.room.roomType}</h2>
-                </div>
-
-                <span
-                  className={`booking-status ${booking.status.toLowerCase()}`}
-                >
-                  {booking.status}
-                </span>
+                <img
+                  src={booking.room.imageUrl}
+                  alt={booking.room.roomType}
+                />
 
               </div>
 
-              <p className="booking-description">
-                {booking.room.description}
-              </p>
+              <div className="booking-info">
 
-              <div className="booking-details">
+                <div className="booking-title">
 
-                <div>
-                  <span>CHECK-IN</span>
-                  <strong>{booking.checkIn}</strong>
+                  <div>
+
+                    <p>
+                      ROOM {booking.room.roomNumber}
+                    </p>
+
+                    <h2>
+                      {booking.room.roomType}
+                    </h2>
+
+                  </div>
+
+                  <span
+                    className={`booking-status ${booking.status.toLowerCase()}`}
+                  >
+                    {booking.status}
+                  </span>
+
                 </div>
 
-                <div>
-                  <span>CHECK-OUT</span>
-                  <strong>{booking.checkOut}</strong>
+                <p className="booking-description">
+                  {booking.room.description}
+                </p>
+
+                <div className="booking-details">
+
+                  <div>
+                    <span>CHECK-IN</span>
+                    <strong>{booking.checkIn}</strong>
+                  </div>
+
+                  <div>
+                    <span>CHECK-OUT</span>
+                    <strong>{booking.checkOut}</strong>
+                  </div>
+
+                  <div>
+                    <span>GUESTS</span>
+                    <strong>{booking.guests}</strong>
+                  </div>
+
+                  <div>
+                    <span>TOTAL</span>
+                    <strong>₹{booking.totalPrice}</strong>
+                  </div>
+
                 </div>
 
-                <div>
-                  <span>GUESTS</span>
-                  <strong>{booking.guests}</strong>
-                </div>
+                {booking.status === "CONFIRMED" && (
 
-                <div>
-                  <span>TOTAL</span>
-                  <strong>₹{booking.totalPrice}</strong>
-                </div>
+                  <div className="booking-actions">
+
+                    {isPaid ? (
+
+                      <span className="paid-booking">
+                        ✓ PAID
+                      </span>
+
+                    ) : (
+
+                      <button
+                        className="pay-booking-button"
+                        onClick={() =>
+                          navigate(`/payment/${booking.id}`)
+                        }
+                      >
+                        Pay Now
+                      </button>
+
+                    )}
+
+                    <button
+                      className="cancel-booking-button"
+                      onClick={() =>
+                        handleCancel(booking.id)
+                      }
+                    >
+                      Cancel Booking
+                    </button>
+
+                  </div>
+
+                )}
 
               </div>
 
-              {booking.status === "CONFIRMED" && (
-                <div>
-                  <button
-                    className="pay-booking-button"
-                    onClick={() => navigate(`/payment/${booking.id}`)}
-                  >
-                    Pay Now
-                  </button>
-
-                  <button
-                    className="cancel-booking-button"
-                    onClick={() => handleCancel(booking.id)}
-                  >
-                    Cancel Booking
-                  </button>
-                </div>
-              )}
             </div>
-
-          </div>
-
-        ))}
+          );
+        })}
 
       </div>
 

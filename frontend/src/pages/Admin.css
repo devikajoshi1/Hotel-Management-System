@@ -1,0 +1,127 @@
+.admin-page {
+  min-height: 100vh;
+  background: #f8f7f4;
+  padding: 80px 60px;
+}
+
+.admin-header {
+  max-width: 1100px;
+  margin: 0 auto 50px;
+}
+
+.admin-header p {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: #999;
+  margin-bottom: 12px;
+}
+
+.admin-header h1 {
+  font-size: 48px;
+  font-weight: 400;
+  margin: 0 0 10px;
+}
+
+.admin-header span {
+  color: #777;
+}
+
+.admin-cards {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.admin-card {
+  background: white;
+  padding: 30px;
+  border: 1px solid #eee;
+}
+
+.admin-card span {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #999;
+}
+
+.admin-card strong {
+  display: block;
+  font-size: 38px;
+  font-weight: 400;
+  margin: 15px 0 5px;
+}
+
+.admin-card p {
+  color: #777;
+  font-size: 13px;
+  margin: 0;
+}
+
+.admin-section {
+  max-width: 1100px;
+  margin: 40px auto 0;
+  padding: 35px;
+  background: white;
+  border: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-section-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #999;
+  margin: 0 0 10px;
+}
+
+.admin-section h2 {
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.admin-actions button {
+  padding: 13px 20px;
+  background: #222;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.admin-actions button:hover {
+  background: #444;
+}
+
+@media (max-width: 768px) {
+  .admin-page {
+    padding: 50px 20px;
+  }
+
+  .admin-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+  }
+
+  .admin-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .admin-actions button {
+    width: 100%;
+  }
+}

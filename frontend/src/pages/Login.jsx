@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import "./Login.css";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,6 +23,8 @@ const Login = () => {
         localStorage.setItem("user", JSON.stringify(response.data));
 
         alert("Login successful!");
+
+        navigate("/rooms");
       })
       .catch((error) => {
         console.log(error);

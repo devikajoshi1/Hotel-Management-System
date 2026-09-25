@@ -1,15 +1,18 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("user"))
-  );
+  const navigate = useNavigate();
+
+  // Subscribing to the location re-renders the navbar on every page change,
+  // so it picks up the user saved in localStorage right after login.
+  useLocation();
+
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    setUser(null);
+    navigate("/");
   };
 
   return (

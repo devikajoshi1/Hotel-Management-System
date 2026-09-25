@@ -35,7 +35,7 @@ const Register = () => {
     <div className='register-page'>
       <div className="register-box">
         <h1>Create Account</h1>
-        <p>Join Luxore and start booking your stay.</p>
+        <p>Join Luxora and start booking your stay.</p>
 
       <form onSubmit={handleRegister}>
         <div className="form-group">

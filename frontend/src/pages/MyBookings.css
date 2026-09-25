@@ -145,3 +145,59 @@
   background: #444;
   border-color: #444;
 }
+/* BOOKING ACTIONS */
+
+.booking-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.paid-booking {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 90px;
+  height: 42px;
+  padding: 0 18px;
+
+  box-sizing: border-box;
+
+  background: #eef5ee;
+  color: #3d6b43;
+
+  border: 1px solid #d5e4d5;
+  border-radius: 3px;
+
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.booking-actions .cancel-booking-button {
+  margin-top: 0;
+
+  height: 42px;
+  padding: 0 20px;
+
+  background: white;
+  color: #8a4a4a;
+
+  border: 1px solid #d8baba;
+  border-radius: 3px;
+
+  font-size: 12px;
+  letter-spacing: 0.5px;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.booking-actions .cancel-booking-button:hover {
+  background: #f8eeee;
+  border-color: #c9a2a2;
+}

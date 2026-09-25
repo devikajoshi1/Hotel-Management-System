@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./Booking.css";
 
 const Booking = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
@@ -68,6 +69,8 @@ const Booking = () => {
         alert(
           `Booking Confirmed!\n\nStatus: ${response.data.status}\nTotal: ₹${response.data.totalPrice}`
         );
+
+        navigate(`/payment/${response.data.id}`);
       })
       .catch((error) => {
         console.log("Booking error:", error);

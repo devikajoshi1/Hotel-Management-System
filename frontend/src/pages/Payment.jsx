@@ -1,6 +1,6 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import "./Payment.css";
 
 const Payment = () => {
@@ -8,6 +8,8 @@ const Payment = () => {
 
   const [booking, setBooking] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("UPI");
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
+
 
   useEffect(() => {
     axios
@@ -33,19 +35,50 @@ const Payment = () => {
     };
 
     axios
-      .post("http://localhost:8080/api/payments", payment)
-      .then((response) => {
-        console.log("Payment successful:", response.data);
-        alert("Payment successful!");
-      })
-      .catch((error) => {
-        console.log("Payment error:", error);
-        alert("Payment failed!");
-      });
+  .post("http://localhost:8080/api/payments", payment)
+  .then((response) => {
+    console.log("Payment successful:", response.data);
+    setPaymentSuccess(true);
+  })
+  .catch((error) => {
+    console.log("Payment error:", error);
+    alert("Payment failed!");
+  });
   };
 
   if (!booking) {
     return <p>Loading payment...</p>;
+  }
+  if(paymentSuccess){
+    return(
+      <div className="payment-success-page">
+
+        <div className="payment-success-box">
+
+          <div className="success-icon">
+
+            <p className="payment-label">
+              LUXORA HOTEL
+            </p>
+
+            <h1>Payment Successful</h1>
+
+            <p>
+              Your payment of ₹{booking.totalPrice} was
+              completed successfully.
+            </p>
+
+          <button
+            onClick={()=>
+              window.location.href = '/my-bookings'
+            }
+            className="success-bookings-button"
+          >View My Bookings</button>
+
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (
