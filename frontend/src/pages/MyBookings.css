@@ -201,3 +201,72 @@
   background: #f8eeee;
   border-color: #c9a2a2;
 }
+
+/* ==============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+  .my-bookings-page {
+    padding: 60px 30px;
+  }
+
+  .booking-card {
+    grid-template-columns: 220px 1fr;
+  }
+
+  .booking-info {
+    padding: 30px;
+  }
+
+  .booking-details {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .my-bookings-page {
+    padding: 40px 16px;
+  }
+
+  .my-bookings-header {
+    margin-bottom: 35px;
+  }
+
+  .my-bookings-header h1 {
+    font-size: 36px;
+  }
+
+  .booking-card {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-image img {
+    display: block;
+    min-height: 0;
+    height: 220px;
+  }
+
+  .booking-info {
+    padding: 25px 20px;
+  }
+
+  .booking-title {
+    gap: 12px;
+  }
+
+  .booking-title h2 {
+    font-size: 24px;
+  }
+
+  .booking-actions {
+    flex-wrap: wrap;
+  }
+
+  .booking-actions .pay-booking-button,
+  .booking-actions .cancel-booking-button {
+    flex: 1;
+    margin-right: 0;
+  }
+}

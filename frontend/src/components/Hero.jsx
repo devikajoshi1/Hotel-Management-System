@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import "./Hero.css";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="hero">
 
@@ -18,7 +21,10 @@ const Hero = () => {
           in the heart of the city.
         </p>
 
-        <button className="hero-button">
+        <button
+          className="hero-button"
+          onClick={() => navigate("/rooms")}
+        >
           Explore Rooms
         </button>
       </div>

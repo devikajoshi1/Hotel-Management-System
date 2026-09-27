@@ -4,7 +4,7 @@
     align-items: center;
     padding: 80px;
     background-image: url("https://images.unsplash.com/photo-1566073771259-6a8506099945");
-    background-size: center;
+    background-size: cover;
     background-position: center;
     position: relative;
 }
@@ -51,4 +51,36 @@
   color: #222;
   font-size: 15px;
   cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: 520px;
+    padding: 60px 40px;
+  }
+
+  .hero h1 {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: 460px;
+    padding: 50px 22px 80px;
+  }
+
+  .hero-small-text {
+    font-size: 11px;
+    letter-spacing: 3px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+    margin-bottom: 18px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+  }
 }

@@ -1,12 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./MyBookings.css";
 
 const MyBookings = () => {
   const [bookings, setBookings] = useState([]);
   const [payments, setPayments] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const navigate = useNavigate();
+
+  const user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -20,6 +24,7 @@ const MyBookings = () => {
 
         const bookingList = response.data;
         setBookings(bookingList);
+        setLoading(false);
 
         const paymentData = {};
 
@@ -30,7 +35,7 @@ const MyBookings = () => {
             );
 
             paymentData[booking.id] = paymentResponse.data;
-          } catch (error) {
+          } catch {
             console.log(
               `No payment found for booking ${booking.id}`
             );
@@ -41,6 +46,8 @@ const MyBookings = () => {
       })
       .catch((error) => {
         console.log("Booking error:", error);
+        setError(true);
+        setLoading(false);
       });
   }, []);
 
@@ -77,6 +84,33 @@ const MyBookings = () => {
         </span>
       </div>
 
+      {!user ? (
+        <div className="page-state">
+          <h2>Please log in</h2>
+          <p>Log in to see and manage your bookings.</p>
+          <Link to="/login" className="page-state-button">
+            Login
+          </Link>
+        </div>
+      ) : loading ? (
+        <div className="page-state">
+          <div className="page-loader"></div>
+          <p>Loading your bookings...</p>
+        </div>
+      ) : error ? (
+        <div className="page-state error">
+          <h2>Something went wrong</h2>
+          <p>Could not load your bookings. Please try again later.</p>
+        </div>
+      ) : bookings.length === 0 ? (
+        <div className="page-state">
+          <h2>No bookings yet</h2>
+          <p>You haven't booked a stay with us yet.</p>
+          <Link to="/rooms" className="page-state-button">
+            Browse Rooms
+          </Link>
+        </div>
+      ) : (
       <div className="bookings-list">
 
         {bookings.map((booking) => {
@@ -197,6 +231,7 @@ const MyBookings = () => {
         })}
 
       </div>
+      )}
 
     </div>
   );

@@ -41,3 +41,50 @@
   cursor: pointer;
   white-space: nowrap;
 }
+
+.search-item input,
+.search-item select {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.search-button:hover {
+  background: #444;
+}
+
+@media (max-width: 900px) {
+  .booking-search {
+    width: 90%;
+    flex-wrap: wrap;
+    gap: 20px;
+    box-sizing: border-box;
+  }
+
+  .search-item {
+    flex: 1 1 40%;
+  }
+
+  .search-button {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .booking-search {
+    width: auto;
+    margin: -40px 16px 0;
+    padding: 22px 20px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .search-item {
+    flex: none;
+  }
+
+  .search-button {
+    flex: none;
+    width: 100%;
+  }
+}

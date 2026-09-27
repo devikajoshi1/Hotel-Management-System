@@ -29,9 +29,7 @@ const Payment = () => {
       booking: {
         id: booking.id,
       },
-      amount: booking.totalPrice,
       paymentMethod: paymentMethod,
-      paymentStatus: "SUCCESS",
     };
 
     axios
@@ -42,7 +40,8 @@ const Payment = () => {
   })
   .catch((error) => {
     console.log("Payment error:", error);
-    alert("Payment failed!");
+      alert(error.response?.data?.message || "Payment failed!");
+
   });
   };
 

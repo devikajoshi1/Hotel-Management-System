@@ -81,3 +81,54 @@
 .book-now-button:hover {
   background: #444;
 }
+
+/* ==============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+  .room-details-page {
+    padding: 60px 30px;
+  }
+
+  .room-details-container {
+    grid-template-columns: 1fr;
+  }
+
+  .room-details-image img {
+    height: 400px;
+    display: block;
+  }
+
+  .room-details-info {
+    padding: 45px 40px;
+  }
+
+  .room-details-info h1 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .room-details-page {
+    padding: 30px 16px;
+  }
+
+  .room-details-image img {
+    height: 260px;
+  }
+
+  .room-details-info {
+    padding: 30px 22px;
+  }
+
+  .room-details-info h1 {
+    font-size: 32px;
+    margin-bottom: 18px;
+  }
+
+  .room-details-description {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+}

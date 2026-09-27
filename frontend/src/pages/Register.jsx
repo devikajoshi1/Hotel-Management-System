@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import "./Register.css"
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const[name, setName] = useState("");
   const[email, setEmail] = useState("");
   const[password, setPassword] = useState("");
@@ -14,7 +17,7 @@ const Register = () => {
       name : name,
       email : email,
       password: password,
-      role:"USER",
+      
 
     };
 
@@ -23,10 +26,13 @@ const Register = () => {
       .then((response) => {
         console.log("Registration successful: ",response.data);
         alert("Account created successfully!");
+        navigate("/login");
+
       })
       .catch((error)=>{
         console.log(error);
-        alert("Registration failed");
+        alert(error.response?.data?.message || "Registration failed");
+
       })
 
   }

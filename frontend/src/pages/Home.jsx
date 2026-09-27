@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import BookingSearch from "../components/BookingSearch";
 import FeaturedRooms from "../components/FeaturedRooms";
