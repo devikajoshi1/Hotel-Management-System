@@ -42,9 +42,12 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getAllUsers(){
+    public List<User> getAllUsers(
+            @RequestHeader(value = "X-User-Id", required = false) Long userId) {
+        userService.requireAdmin(userId);
         return userService.getAllUsers();
     }
+
 
     @GetMapping("/{id}")
     public Optional<User> getUserById(@PathVariable Long id){

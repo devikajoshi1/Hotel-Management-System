@@ -68,4 +68,18 @@ public class UserService {
     public Optional<User> getUserById(Long id) {
         return userRepository.findById(id);
     }
+    public void requireAdmin(Long userId){
+        if(userId == null){
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,
+               "Please log in.");
+        }
+        User user = userRepository.findById(userId)
+                .orElseThrow(()-> new ResponseStatusException(HttpStatus.UNAUTHORIZED,
+                "Please log in."));
+        if(!"ADMIN".equals(user.getRole())){
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN,
+            "Only admin can do this.");
+        }
+    }
+
 }

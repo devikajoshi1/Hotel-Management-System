@@ -3,6 +3,7 @@ package com.hotel.hotelbooking.controller;
 import com.hotel.hotelbooking.entity.Booking;
 import com.hotel.hotelbooking.repository.BookingRepository;
 import com.hotel.hotelbooking.service.BookingService;
+import com.hotel.hotelbooking.service.UserService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -14,9 +15,11 @@ import java.util.Optional;
 @RequestMapping("/api/bookings")
 public class BookingController {
     private final BookingService bookingService;
+    private final UserService userService;
 
-    public BookingController(BookingService bookingService) {
+    public BookingController(BookingService bookingService, UserService userService) {
         this.bookingService = bookingService;
+        this.userService = userService;
     }
 
     @PostMapping
@@ -25,9 +28,12 @@ public class BookingController {
     }
 
     @GetMapping
-    public List<Booking> getAllBookings(){
+    public List<Booking> getAllBookings(
+            @RequestHeader(value = "X-User-Id", required = false) Long userId) {
+        userService.requireAdmin(userId);
         return bookingService.getAllBookings();
     }
+
 
     @GetMapping("/{id}")
     public Optional<Booking> getBookingById(@PathVariable Long id){

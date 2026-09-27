@@ -7,7 +7,9 @@
 }
 
 .register-box {
-  width: 420px;
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
   background: white;
   padding: 45px;
 }
@@ -23,22 +25,23 @@
   margin-bottom: 35px;
 }
 
-.form-group {
+.register-box .form-group {
   margin-bottom: 22px;
 }
 
-.form-group label {
+.register-box .form-group label {
   display: block;
   margin-bottom: 8px;
   font-size: 14px;
 }
 
-.form-group input {
+.register-box .form-group input {
   width: 100%;
   padding: 14px;
   border: 1px solid #ddd;
   outline: none;
   font-size: 15px;
+  box-sizing: border-box;
 }
 
 .register-submit {
@@ -49,4 +52,22 @@
   color: white;
   font-size: 15px;
   cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .register-page {
+    padding: 30px 16px;
+  }
+
+  .register-box {
+    padding: 32px 22px;
+  }
+
+  .register-box h1 {
+    font-size: 30px;
+  }
+
+  .register-box > p {
+    margin-bottom: 28px;
+  }
 }

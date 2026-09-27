@@ -128,3 +128,69 @@
 .confirm-booking-button:hover {
   background: #444;
 }
+
+@media (max-width: 900px) {
+  .booking-page {
+    padding: 60px 30px;
+  }
+
+  .booking-container {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-room img {
+    height: 320px;
+    min-height: 0;
+    display: block;
+  }
+
+  .booking-room-info {
+    padding: 40px;
+  }
+
+  .booking-room-info h1 {
+    font-size: 34px;
+  }
+
+  .booking-form-box {
+    padding: 45px 40px;
+  }
+
+  .booking-form-box h2 {
+    font-size: 28px;
+    margin-bottom: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .booking-page {
+    padding: 30px 16px;
+  }
+
+  .booking-room img {
+    height: 240px;
+  }
+
+  .booking-room-info {
+    padding: 30px 22px;
+  }
+
+  .booking-room-info h1 {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .booking-form-box {
+    padding: 32px 22px;
+  }
+
+  .booking-form-box h2 {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .booking-room-details,
+  .booking-summary div {
+    gap: 12px;
+  }
+}

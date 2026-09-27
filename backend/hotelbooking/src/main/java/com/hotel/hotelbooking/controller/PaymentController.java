@@ -2,6 +2,7 @@ package com.hotel.hotelbooking.controller;
 
 import com.hotel.hotelbooking.entity.Payment;
 import com.hotel.hotelbooking.service.PaymentService;
+import com.hotel.hotelbooking.service.UserService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -14,10 +15,13 @@ import java.util.Optional;
 public class PaymentController {
 
     private final PaymentService paymentService;
+    private final UserService userService;
 
-    public PaymentController(PaymentService paymentService) {
+    public PaymentController(PaymentService paymentService, UserService userService) {
         this.paymentService = paymentService;
+        this.userService = userService;
     }
+
 
     @PostMapping
     public Payment makePayment(@RequestBody Payment payment) {
@@ -25,7 +29,9 @@ public class PaymentController {
     }
 
     @GetMapping
-    public List<Payment> getAllPayments(){
+    public List<Payment> getAllPayments(
+            @RequestHeader(value = "X-User-Id", required = false) Long userId) {
+        userService.requireAdmin(userId);
         return paymentService.getAllPayments();
     }
 
