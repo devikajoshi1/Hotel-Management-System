@@ -63,7 +63,7 @@ Hotel management System/
 │       ├── components/            Navbar, Hero, BookingSearch, FeaturedRooms, RoomCard, Footer
 │       └── pages/                 Home, Rooms, RoomDetails, Booking, Payment, MyBookings,
 │                                  Login, Register, Admin
-└── database/seed.sql              Sample rooms
+└── database/seed.sql              The 10 hotel rooms for a fresh database
 ```
 
 The backend follows a layered architecture: **Controller → Service → Repository → Database**. Controllers handle HTTP, services hold the business rules, repositories talk to MySQL.
@@ -134,7 +134,7 @@ Errors come back with an HTTP status and a message, for example `409 Conflict �
    ./mvnw spring-boot:run
    ```
 
-4. **Add sample rooms** — run `database/seed.sql` once in MySQL Workbench or:
+4. **Add the rooms** — run `database/seed.sql` once (adds the 10 hotel rooms) in MySQL Workbench or:
    ```bash
    mysql -u root -p < database/seed.sql
    ```
