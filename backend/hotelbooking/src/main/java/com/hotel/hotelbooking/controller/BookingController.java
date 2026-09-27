@@ -4,10 +4,12 @@ import com.hotel.hotelbooking.entity.Booking;
 import com.hotel.hotelbooking.repository.BookingRepository;
 import com.hotel.hotelbooking.service.BookingService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/bookings")
 public class BookingController {
@@ -30,6 +32,11 @@ public class BookingController {
     @GetMapping("/{id}")
     public Optional<Booking> getBookingById(@PathVariable Long id){
         return bookingService.getBookingById(id);
+    }
+
+    @GetMapping("/user/{userId}")
+    public List<Booking> getBookingByUserId(@PathVariable Long userId){
+        return bookingService.getBookingsByUserId(userId);
     }
 
     @PutMapping("/{id}/cancel")

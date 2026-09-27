@@ -26,4 +26,7 @@ public class PaymentService {
     public Optional<Payment> getPaymentById(Long id) {
         return paymentRepository.findById(id);
     }
+    public Optional<Payment> getPaymentByBookingId(Long bookingId) {
+        return paymentRepository.findByBookingId(bookingId);
+    }
 }

@@ -3,10 +3,12 @@ package com.hotel.hotelbooking.controller;
 import com.hotel.hotelbooking.entity.Room;
 import com.hotel.hotelbooking.service.RoomService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/rooms")
 public class RoomController {
