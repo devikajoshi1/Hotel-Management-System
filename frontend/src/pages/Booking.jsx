@@ -38,15 +38,6 @@ const Booking = () => {
       return;
     }
 
-    const startDate = new Date(checkIn);
-    const endDate = new Date(checkOut);
-
-    const timeDifference = endDate - startDate;
-    const numberOfNights =
-      timeDifference / (1000 * 60 * 60 * 24);
-
-    const totalPrice = numberOfNights * room.price;
-
     const booking = {
       user: {
         id: user.id,
@@ -57,8 +48,7 @@ const Booking = () => {
       checkIn: checkIn,
       checkOut: checkOut,
       guests: Number(guests),
-      totalPrice: totalPrice,
-      status: "CONFIRMED",
+
     };
 
     axios
@@ -74,7 +64,7 @@ const Booking = () => {
       })
       .catch((error) => {
         console.log("Booking error:", error);
-        alert("Booking failed!");
+        alert(error.response?.data?.message || "booking failed");
       });
   };
 
