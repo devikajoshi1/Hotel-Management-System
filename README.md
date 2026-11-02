@@ -87,28 +87,28 @@ User 1 ──── * Booking * ──── 1 Room
 
 ## API
 
-Endpoints marked **Admin** need the header `X-User-Id` set to the id of an admin user.
+Logging in returns a random **token**. Endpoints marked **Login** or **Admin** need the header `Authorization: Bearer <token>`. **Login** endpoints only return the user's own data (admins can see everyone's); **Admin** endpoints need an admin account.
 
 | Method | Endpoint | Description | Access |
 |---|---|---|---|
 | POST | `/api/users/register` | Create an account | Public |
-| POST | `/api/users/login` | Log in (401 on wrong email or password) | Public |
+| POST | `/api/users/login` | Log in; returns the token (401 on wrong email or password) | Public |
 | GET | `/api/users` | List all users | Admin |
-| GET | `/api/users/{id}` | Get one user | Public |
+| GET | `/api/users/{id}` | Get one user | Login |
 | GET | `/api/rooms` | List rooms | Public |
 | GET | `/api/rooms/{id}` | Get one room | Public |
 | POST | `/api/rooms` | Add a room | Admin |
 | PUT | `/api/rooms/{id}` | Update a room | Admin |
 | DELETE | `/api/rooms/{id}` | Delete a room without bookings | Admin |
-| POST | `/api/bookings` | Create a booking (validated, price set by server) | Public |
+| POST | `/api/bookings` | Create a booking for the logged-in user (validated, price set by server) | Login |
 | GET | `/api/bookings` | List all bookings | Admin |
-| GET | `/api/bookings/{id}` | Get one booking | Public |
-| GET | `/api/bookings/user/{userId}` | A user's bookings | Public |
-| PUT | `/api/bookings/{id}/cancel` | Cancel a booking | Public |
-| POST | `/api/payments` | Pay for a booking (amount set by server) | Public |
+| GET | `/api/bookings/{id}` | Get one booking | Login |
+| GET | `/api/bookings/user/{userId}` | A user's bookings | Login |
+| PUT | `/api/bookings/{id}/cancel` | Cancel a booking | Login |
+| POST | `/api/payments` | Pay for a booking (amount set by server) | Login |
 | GET | `/api/payments` | List all payments | Admin |
-| GET | `/api/payments/{id}` | Get one payment | Public |
-| GET | `/api/payments/booking/{bookingId}` | Payment for a booking | Public |
+| GET | `/api/payments/{id}` | Get one payment | Login |
+| GET | `/api/payments/booking/{bookingId}` | Payment for a booking | Login |
 
 Errors come back with an HTTP status and a message, for example `409 Conflict — "This room is already booked for the selected dates."`
 
@@ -155,7 +155,7 @@ Errors come back with an HTTP status and a message, for example `409 Conflict �
 
 ## Known limitations and future work
 
-- **Authentication is simplified.** The logged-in user is kept in the browser's `localStorage`, and admin requests identify the user with an `X-User-Id` header, which a client could fake. A production version would use **Spring Security with JWT tokens** signed by the server.
+- **Authentication is simple.** Login issues a random token stored on the user row and kept in the browser's `localStorage`; it does not expire until the next login. A larger production system would use **Spring Security** with expiring JWT tokens and logout.
 - **Payments are simulated.** A real deployment would integrate a gateway such as Razorpay or Stripe and mark a payment successful only after the gateway confirms it.
 - Cancelling a paid booking does not issue a refund.
 - Room search filters by guests only; it does not yet check availability for specific dates on the Rooms page (the booking itself is still checked for overlaps).

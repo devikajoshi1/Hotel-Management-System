@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../api";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./Booking.css";
@@ -13,8 +13,8 @@ const Booking = () => {
   const [room, setRoom] = useState(null);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8080/api/rooms/${id}`)
+    api
+      .get(`/rooms/${id}`)
       .then((response) => {
         setRoom(response.data);
       })
@@ -51,8 +51,8 @@ const Booking = () => {
 
     };
 
-    axios
-      .post("http://localhost:8080/api/bookings", booking)
+    api
+      .post("/bookings", booking)
       .then((response) => {
         console.log("Booking successful:", response.data);
 

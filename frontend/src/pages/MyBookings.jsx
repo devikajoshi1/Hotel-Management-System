@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../api";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./MyBookings.css";
@@ -17,8 +17,8 @@ const MyBookings = () => {
 
     if (!user) return;
 
-    axios
-      .get(`http://localhost:8080/api/bookings/user/${user.id}`)
+    api
+      .get(`/bookings/user/${user.id}`)
       .then(async (response) => {
         console.log("My bookings:", response.data);
 
@@ -30,8 +30,8 @@ const MyBookings = () => {
 
         for (const booking of bookingList) {
           try {
-            const paymentResponse = await axios.get(
-              `http://localhost:8080/api/payments/booking/${booking.id}`
+            const paymentResponse = await api.get(
+              `/payments/booking/${booking.id}`
             );
 
             paymentData[booking.id] = paymentResponse.data;
@@ -52,8 +52,8 @@ const MyBookings = () => {
   }, []);
 
   const handleCancel = (bookingId) => {
-    axios
-      .put(`http://localhost:8080/api/bookings/${bookingId}/cancel`)
+    api
+      .put(`/bookings/${bookingId}/cancel`)
       .then(() => {
         alert("Booking cancelled successfully!");
 

@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../api";
 import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import "./RoomDetails.css";
@@ -11,8 +11,8 @@ const RoomDetails = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8080/api/rooms/${id}`)
+    api
+      .get(`/rooms/${id}`)
       .then((response) => {
         console.log("Room data:", response.data);
 

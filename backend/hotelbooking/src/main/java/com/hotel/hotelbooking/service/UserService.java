@@ -9,6 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserService {
@@ -50,15 +51,20 @@ public class UserService {
         if (!storedPassword.startsWith("$2")) {
             if (storedPassword.equals(password)) {
                 existingUser.setPassword(passwordEncoder.encode(password));
-                return userRepository.save(existingUser);
+                return issueToken(existingUser);
             }
             return null;
         }
 
         if (passwordEncoder.matches(password, storedPassword)) {
-            return existingUser;
+            return issueToken(existingUser);
         }
         return null;
+    }
+
+    private User issueToken(User user) {
+        user.setAuthToken(UUID.randomUUID().toString());
+        return userRepository.save(user);
     }
 
     public List<User> getAllUsers() {
@@ -68,18 +74,41 @@ public class UserService {
     public Optional<User> getUserById(Long id) {
         return userRepository.findById(id);
     }
-    public void requireAdmin(Long userId){
-        if(userId == null){
+
+    // Finds the logged-in user from the "Authorization: Bearer <token>" header
+    public User requireUser(String authorization) {
+        if (authorization == null || !authorization.startsWith("Bearer ")) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,
-               "Please log in.");
+                    "Please log in.");
         }
-        User user = userRepository.findById(userId)
-                .orElseThrow(()-> new ResponseStatusException(HttpStatus.UNAUTHORIZED,
-                "Please log in."));
-        if(!"ADMIN".equals(user.getRole())){
+
+        String token = authorization.substring("Bearer ".length());
+
+        return userRepository.findByAuthToken(token)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED,
+                        "Your session has expired. Please log in again."));
+    }
+
+    public User requireAdmin(String authorization) {
+        User user = requireUser(authorization);
+
+        if (!isAdmin(user)) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN,
-            "Only admin can do this.");
+                    "Only admin can do this.");
         }
+        return user;
+    }
+
+    // Lets a user act on their own data; admins can act on anyone's
+    public void requireSelfOrAdmin(User user, Long ownerId) {
+        if (!isAdmin(user) && !user.getId().equals(ownerId)) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN,
+                    "You can only access your own bookings.");
+        }
+    }
+
+    private boolean isAdmin(User user) {
+        return "ADMIN".equals(user.getRole());
     }
 
 }

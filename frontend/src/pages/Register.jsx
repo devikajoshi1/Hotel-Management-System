@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../api';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./Register.css";
@@ -21,8 +21,8 @@ const Register = () => {
 
     };
 
-    axios
-      .post("http://localhost:8080/api/users/register", user)
+    api
+      .post("/users/register", user)
       .then((response) => {
         console.log("Registration successful: ",response.data);
         alert("Account created successfully!");

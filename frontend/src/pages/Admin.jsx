@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../api";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Admin.css";
@@ -36,13 +36,11 @@ const Admin = () => {
   useEffect(() => {
     if (!isAdmin) return;
 
-    const config = { headers: { "X-User-Id": userId } };
-
     Promise.all([
-      axios.get("http://localhost:8080/api/rooms"),
-      axios.get("http://localhost:8080/api/bookings", config),
-      axios.get("http://localhost:8080/api/users", config),
-      axios.get("http://localhost:8080/api/payments", config),
+      api.get("/rooms"),
+      api.get("/bookings"),
+      api.get("/users"),
+      api.get("/payments"),
     ])
       .then(([roomsResponse, bookingsResponse, usersResponse, paymentsResponse]) => {
         setRooms(roomsResponse.data);
@@ -63,8 +61,6 @@ const Admin = () => {
   const reload = () => {
     setReloadKey((key) => key + 1);
   };
-
-  const adminConfig = { headers: { "X-User-Id": userId } };
 
   // ---------- Rooms ----------
 
@@ -113,8 +109,8 @@ const Admin = () => {
     };
 
     const request = editingRoomId
-      ? axios.put(`http://localhost:8080/api/rooms/${editingRoomId}`, room, adminConfig)
-      : axios.post("http://localhost:8080/api/rooms", room, adminConfig);
+      ? api.put(`/rooms/${editingRoomId}`, room)
+      : api.post("/rooms", room);
 
     request
       .then(() => {
@@ -129,11 +125,10 @@ const Admin = () => {
   };
 
   const toggleAvailability = (room) => {
-    axios
+    api
       .put(
-        `http://localhost:8080/api/rooms/${room.id}`,
-        { ...room, available: !room.available },
-        adminConfig
+        `/rooms/${room.id}`,
+        { ...room, available: !room.available }
       )
       .then(() => {
         reload();
@@ -147,8 +142,8 @@ const Admin = () => {
   const handleDeleteRoom = (room) => {
     if (!window.confirm(`Delete room ${room.roomNumber}?`)) return;
 
-    axios
-      .delete(`http://localhost:8080/api/rooms/${room.id}`, adminConfig)
+    api
+      .delete(`/rooms/${room.id}`)
       .then(() => {
         alert("Room deleted!");
         reload();
@@ -164,8 +159,8 @@ const Admin = () => {
   const handleCancelBooking = (booking) => {
     if (!window.confirm(`Cancel booking #${booking.id}?`)) return;
 
-    axios
-      .put(`http://localhost:8080/api/bookings/${booking.id}/cancel`)
+    api
+      .put(`/bookings/${booking.id}/cancel`)
       .then(() => {
         reload();
       })

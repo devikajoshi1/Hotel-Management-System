@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../api";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import RoomCard from "./RoomCard";
@@ -9,8 +9,8 @@ const FeaturedRooms = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/rooms")
+    api
+      .get("/rooms")
       .then((response) => {
         // show the first 3 rooms that can be booked
         const availableRooms = response.data.filter(

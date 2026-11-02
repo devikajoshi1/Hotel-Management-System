@@ -1,5 +1,6 @@
 package com.hotel.hotelbooking.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.persistence.Entity;
@@ -18,6 +19,9 @@ public class User {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     private String role;
+
+    @JsonIgnore
+    private String authToken;
 
     public User() {
     }
@@ -62,6 +66,13 @@ public class User {
         this.role = role;
     }
 
+    public String getAuthToken() {
+        return authToken;
+    }
+
+    public void setAuthToken(String authToken) {
+        this.authToken = authToken;
+    }
 
 
 

@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./Payment.css";
@@ -12,8 +12,8 @@ const Payment = () => {
 
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8080/api/bookings/${bookingId}`)
+    api
+      .get(`/bookings/${bookingId}`)
       .then((response) => {
         setBooking(response.data);
       })
@@ -32,8 +32,8 @@ const Payment = () => {
       paymentMethod: paymentMethod,
     };
 
-    axios
-  .post("http://localhost:8080/api/payments", payment)
+    api
+  .post("/payments", payment)
   .then((response) => {
     console.log("Payment successful:", response.data);
     setPaymentSuccess(true);

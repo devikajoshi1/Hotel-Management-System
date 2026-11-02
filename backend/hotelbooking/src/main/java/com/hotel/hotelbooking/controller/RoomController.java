@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/rooms")
 public class RoomController {
@@ -23,8 +22,8 @@ public class RoomController {
 
     @PostMapping
     public Room addRoom(@RequestBody Room room,
-                        @RequestHeader(value = "X-User-Id", required = false) Long userId) {
-        userService.requireAdmin(userId);
+                        @RequestHeader(value = "Authorization", required = false) String authorization) {
+        userService.requireAdmin(authorization);
         return roomService.addRoom(room);
     }
 
@@ -41,15 +40,15 @@ public class RoomController {
     @PutMapping("/{id}")
     public Room updateRoom(@PathVariable Long id,
                            @RequestBody Room room,
-                           @RequestHeader(value = "X-User-Id", required = false) Long userId) {
-        userService.requireAdmin(userId);
+                           @RequestHeader(value = "Authorization", required = false) String authorization) {
+        userService.requireAdmin(authorization);
         return roomService.updateRoom(id, room);
     }
 
     @DeleteMapping("/{id}")
     public String deleteRoomById(@PathVariable Long id,
-                                 @RequestHeader(value = "X-User-Id", required = false) Long userId) {
-        userService.requireAdmin(userId);
+                                 @RequestHeader(value = "Authorization", required = false) String authorization) {
+        userService.requireAdmin(authorization);
         roomService.deleteRoom(id);
         return "Room deleted successfully";
     }

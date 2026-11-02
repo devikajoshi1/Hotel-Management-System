@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../api";
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import RoomCard from "../components/RoomCard";
@@ -14,8 +14,8 @@ const Rooms = () => {
   const guests = Number(searchParams.get("guests")) || 0;
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/rooms")
+    api
+      .get("/rooms")
       .then((response) => {
         setRooms(response.data);
         setLoading(false);

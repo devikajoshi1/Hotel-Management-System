@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import "./Login.css";
-import axios from 'axios';
+import api from '../api';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -15,8 +15,8 @@ const Login = () => {
       email: email,
       password: password,
     };
-    axios
-      .post("http://localhost:8080/api/users/login", user)
+    api
+      .post("/users/login", user)
       .then((response) => {
         console.log("Login successful:", response.data);
 
